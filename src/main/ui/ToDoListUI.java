@@ -36,6 +36,7 @@ public class ToDoListUI {
     }
 
     // MODIFIES ToDoList
+    // EFFECTS Fill the toDoList by a 2 List with 2 tasks in each list
     public void seed(ToDoList toDoList) {
         // Randomize seeding
 //        Random random = new Random();
@@ -78,7 +79,7 @@ public class ToDoListUI {
 
     // EFFECTS Add a task to a list
     // MODIFIES useToDoList
-    // REQUIRES 0<=index<userToDoList.getLength()
+    // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuAddTask(ToDoList userToDoList, int index) {
         Scanner input = new Scanner(System.in);
         String userInputTasks;
@@ -90,7 +91,7 @@ public class ToDoListUI {
 
     // EFFECTS Move the selected task to done list
     // MODIFIES useToDoList
-    // REQUIRES 0<=index<userToDoList.getLength()
+    // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuSetTaskDone(ToDoList userToDoList, int index) {
         Scanner input = new Scanner(System.in);
         String userInputTasks;
@@ -102,7 +103,7 @@ public class ToDoListUI {
 
     // EFFECTS Remove the selected task
     // MODIFIES useToDoList
-    // REQUIRES 0<=index<userToDoList.getLength()
+    // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuRemoveTask(ToDoList userToDoList, int index) {
         Scanner input = new Scanner(System.in);
         String userInputTasks;
@@ -110,6 +111,7 @@ public class ToDoListUI {
         userInputTasks = input.next();
         userToDoList.getList(index).removeTask(Integer.parseInt(userInputTasks));
         printTask(userToDoList, index);
+
     }
 
     // EFFECTS Ask user which list to show and print out the list menu. Then return the index.
@@ -120,6 +122,10 @@ public class ToDoListUI {
         printOutPromptInputIndex();
 //        userInputTasks = input.next();
         int index = Integer.parseInt(input.next());
+        while (index < 0 || index >= userToDoList.getLength()) {
+            System.out.println("Out of index");
+            index = Integer.parseInt(input.next());
+        }
         printTask(userToDoList, index);
         printoutListMenu();
         return index;
