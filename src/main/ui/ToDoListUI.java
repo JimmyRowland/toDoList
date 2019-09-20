@@ -14,11 +14,13 @@ public class ToDoListUI {
     }
 
     private void printOutMainMenu() {
-        System.out.println("\"what would you like to do [1] create a list, [2] delete an item [3] view a list [x] exit\"");
+        System.out.println("\"what would you like to do [1] create a list, [2] delete an item "
+                + "[3] view a list [x] exit\"");
     }
 
     private void printoutListMenu() {
-        System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item [3] delete an item [4] return to top menu [x] exit");
+        System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item "
+                + "[3] delete an item [4] return to top menu [x] exit");
     }
 
     public void printOutAddList() {
@@ -109,6 +111,7 @@ public class ToDoListUI {
         userToDoList.getList(index).removeTask(Integer.parseInt(userInputTasks));
         printTask(userToDoList, index);
     }
+
     // EFFECTS Ask user which list to show and print out the list menu. Then return the index.
     // MODIFIES useToDoList
     // REQUIRES 0<=index<userToDoList.getLength()
