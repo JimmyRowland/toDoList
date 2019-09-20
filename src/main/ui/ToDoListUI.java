@@ -14,13 +14,11 @@ public class ToDoListUI {
     }
 
     private void printOutMainMenu() {
-        System.out.println("\"what would you like to do [1] create a list, [2] delete an item "
-                + "[3] view a list [x] exit\"");
+        System.out.println("\"what would you like to do [1] create a list, [2] delete an item [3] view a list [x] exit\"");
     }
 
     private void printoutListMenu() {
-        System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item "
-                + "[3] delete an item [4] return to top menu [x] exit");
+        System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item [3] delete an item [4] return to top menu [x] exit");
     }
 
     public void printOutAddList() {
@@ -35,7 +33,7 @@ public class ToDoListUI {
         System.out.println(toDoList.getName());
     }
 
-    // MODIFIES toDoList
+    // MODIFIES ToDoList
     public void seed(ToDoList toDoList) {
         // Randomize seeding
 //        Random random = new Random();
@@ -76,37 +74,89 @@ public class ToDoListUI {
         System.out.println("Input task name");
     }
 
+    // EFFECTS Add a task to a list
+    // MODIFIES useToDoList
+    // REQUIRES 0<=index<userToDoList.getLength()
+    private void secondaryMenuAddTask(ToDoList userToDoList, int index) {
+        Scanner input = new Scanner(System.in);
+        String userInputTasks;
+        printOutInputTask();
+        userInputTasks = input.next();
+        userToDoList.getList(index).addTask(userInputTasks);
+        printTask(userToDoList, index);
+    }
+
+    // EFFECTS Move the selected task to done list
+    // MODIFIES useToDoList
+    // REQUIRES 0<=index<userToDoList.getLength()
+    private void secondaryMenuSetTaskDone(ToDoList userToDoList, int index) {
+        Scanner input = new Scanner(System.in);
+        String userInputTasks;
+        printOutPromptInputIndex();
+        userInputTasks = input.next();
+        userToDoList.getList(index).setTaskDone(Integer.parseInt(userInputTasks));
+        printTask(userToDoList, index);
+    }
+
+    // EFFECTS Remove the selected task
+    // MODIFIES useToDoList
+    // REQUIRES 0<=index<userToDoList.getLength()
+    private void secondaryMenuRemoveTask(ToDoList userToDoList, int index) {
+        Scanner input = new Scanner(System.in);
+        String userInputTasks;
+        printOutPromptInputIndex();
+        userInputTasks = input.next();
+        userToDoList.getList(index).removeTask(Integer.parseInt(userInputTasks));
+        printTask(userToDoList, index);
+    }
+    // EFFECTS Ask user which list to show and print out the list menu. Then return the index.
+    // MODIFIES useToDoList
+    // REQUIRES 0<=index<userToDoList.getLength()
+    private int secondaryMenuInit(ToDoList userToDoList) {
+        Scanner input = new Scanner(System.in);
+        printOutPromptInputIndex();
+//        userInputTasks = input.next();
+        int index = Integer.parseInt(input.next());
+        printTask(userToDoList, index);
+        printoutListMenu();
+        return index;
+    }
+
     //MODIFIES ToDoList
     //EFFECTS add task, set task to done, or remove tasks according to user input
     private String secondaryMenu(ToDoList userToDoList) {
-        String userInputTasks;
-        String userInput;
+//        String userInputTasks;
+//        String userInput;
         Scanner input = new Scanner(System.in);
-        printOutPromptInputIndex();
-        userInputTasks = input.next();
-        int index = Integer.parseInt(userInputTasks);
-        printTask(userToDoList, index);
-        printoutListMenu();
-        userInput = input.next();
+//        printOutPromptInputIndex();
+////        userInputTasks = input.next();
+//        int index = Integer.parseInt(input.next());
+//        printTask(userToDoList, index);
+//        printoutListMenu();
+        int index = secondaryMenuInit(userToDoList);
+        String userInput = input.next();
         while (true) {
             switch (userInput) {
                 case "1":
-                    printOutInputTask();
-                    userInputTasks = input.next();
-                    userToDoList.getList(index).addTask(userInputTasks);
-                    printTask(userToDoList, index);
+                    secondaryMenuAddTask(userToDoList, index);
+//                    printOutInputTask();
+//                    userInputTasks = input.next();
+//                    userToDoList.getList(index).addTask(userInputTasks);
+//                    printTask(userToDoList, index);
                     break;
                 case "2":
-                    printOutPromptInputIndex();
-                    userInputTasks = input.next();
-                    userToDoList.getList(index).setTaskDone(Integer.parseInt(userInputTasks));
-                    printTask(userToDoList, index);
+                    secondaryMenuSetTaskDone(userToDoList, index);
+//                    printOutPromptInputIndex();
+//                    userInputTasks = input.next();
+//                    userToDoList.getList(index).setTaskDone(Integer.parseInt(userInputTasks));
+//                    printTask(userToDoList, index);
                     break;
                 case "3":
-                    printOutPromptInputIndex();
-                    userInputTasks = input.next();
-                    userToDoList.getList(index).removeTask(Integer.parseInt(userInputTasks));
-                    printTask(userToDoList, index);
+                    secondaryMenuRemoveTask(userToDoList, index);
+//                    printOutPromptInputIndex();
+//                    userInputTasks = input.next();
+//                    userToDoList.getList(index).removeTask(Integer.parseInt(userInputTasks));
+//                    printTask(userToDoList, index);
                     break;
                 case "x":
                 case "4":
