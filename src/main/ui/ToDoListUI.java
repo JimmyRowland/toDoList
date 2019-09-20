@@ -5,32 +5,39 @@ import model.ToDoList;
 import java.util.Scanner;
 
 public class ToDoListUI {
+    // EFFECTS print out Welcome to 'creative todolist application\
     private void printSomething() {
         System.out.println("Welcome to \'creative todolist application\'");
     }
 
+    // EFFECTS Print out Todolist is Very Creative
     private void printSomethingMoreCreative() {
         System.out.println("Todolist is Very Creative");
     }
 
+    // EFFECTS print out the main menu
     private void printOutMainMenu() {
         System.out.println("\"what would you like to do [1] create a list, [2] delete an item "
                 + "[3] view a list [x] exit\"");
     }
 
+    // EFFECTS print out the secondary menu
     private void printoutListMenu() {
         System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item "
                 + "[3] delete an item [4] return to top menu [x] exit");
     }
 
+    // EFFECTS print out Please enter the list name
     public void printOutAddList() {
         System.out.println("Please enter the list name\n");
     }
 
+    // EFFECTS Print out Please enter your name:
     private void printOutInitiation() {
         System.out.println("Please enter your name:\n");
     }
 
+    // EFFECTS print out the name of the toDoList
     private void printOutName(ToDoList toDoList) {
         System.out.println(toDoList.getName());
     }
@@ -52,6 +59,7 @@ public class ToDoListUI {
         }
     }
 
+    // EFFECTS print out the todolist name and all its lists
     private void printLists(ToDoList toDoList) {
 //        printOutName(toDoList);
 //        for(int i=0; i<toDoList.getLength();i++){
@@ -59,20 +67,25 @@ public class ToDoListUI {
 //        }
     }
 
+    // EFFECTS Print out the indexth list in the todolist name and the list's tasks
+    // REQUIRES 0<=index<userToDoList.getLength()
     private void printTask(ToDoList toDoList, int index) {
         printOutName(toDoList);
         System.out.println(toDoList.getName());
         System.out.println(toDoList.getTasksPrint(index));
     }
 
+    // EFFECTS print out Please input your list name:
     private void printOutPromptInputListName() {
         System.out.println("Please input your list name:\n");
     }
 
+    // EFFECTS Print out Please enter the index
     private void printOutPromptInputIndex() {
         System.out.println("Please enter the index");
     }
 
+    // EFFECTS Print out Input task name
     private void printOutInputTask() {
         System.out.println("Input task name");
     }
@@ -94,10 +107,14 @@ public class ToDoListUI {
     // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuSetTaskDone(ToDoList userToDoList, int index) {
         Scanner input = new Scanner(System.in);
-        String userInputTasks;
+        int userInputTasks;
         printOutPromptInputIndex();
-        userInputTasks = input.next();
-        userToDoList.getList(index).setTaskDone(Integer.parseInt(userInputTasks));
+        userInputTasks = Integer.parseInt(input.next());
+        if (userInputTasks >= userToDoList.getList(index).getSize() || userInputTasks < 0) {
+            System.out.println("Out of index");
+            userInputTasks = Integer.parseInt(input.next());
+        }
+        userToDoList.getList(index).setTaskDone(userInputTasks);
         printTask(userToDoList, index);
     }
 
@@ -106,10 +123,14 @@ public class ToDoListUI {
     // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuRemoveTask(ToDoList userToDoList, int index) {
         Scanner input = new Scanner(System.in);
-        String userInputTasks;
+        int userInputTasks;
         printOutPromptInputIndex();
-        userInputTasks = input.next();
-        userToDoList.getList(index).removeTask(Integer.parseInt(userInputTasks));
+        userInputTasks = Integer.parseInt(input.next());
+        if (userInputTasks >= userToDoList.getList(index).getSize() || userInputTasks < 0) {
+            System.out.println("Out of index");
+            userInputTasks = Integer.parseInt(input.next());
+        }
+        userToDoList.getList(index).removeTask(userInputTasks);
         printTask(userToDoList, index);
 
     }
@@ -122,7 +143,7 @@ public class ToDoListUI {
         printOutPromptInputIndex();
 //        userInputTasks = input.next();
         int index = Integer.parseInt(input.next());
-        while (index < 0 || index >= userToDoList.getLength()) {
+        while (index < 0 || index >= userToDoList.getSize()) {
             System.out.println("Out of index");
             index = Integer.parseInt(input.next());
         }

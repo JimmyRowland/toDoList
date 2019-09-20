@@ -37,10 +37,11 @@ public class ToDoList {
     }
 
     //REQUIRES 0<listIndex<lists.size()
+    // EFFECTS return index's list name in the toDoList
     public String getListName(int index) {
         return lists.get(index).getName();
     }
-
+    // EFFECTS return a string that contains the toDOLIst name and all its lists
     public String getListsPrint() {
         String result = name;
         for (int i = 0; i < lists.size(); i++) {
@@ -50,26 +51,29 @@ public class ToDoList {
     }
 
     //MODIFIES this
+    // EFFECTS Add a list named list to toDoList
     public void addList(String list) {
         lists.add(new List(list));
     }
-
+    // EFFECTS return the name of the list
     public String getName() {
         return name;
     }
 
     //MODIFIES this
+    // EFFECTS Set the list name to name
     public void setName(String name) {
         this.name = name;
     }
 
     //MODIFIES this
     //REQUIRES 0<listIndex<lists.size()
+    // EFFECTS Add a task named taskName to listIndexth list
     public void addTask(int listIndex, String taskName) {
         lists.get(listIndex).addTask(taskName);
     }
-
-    public int getLength() {
+    // EFFECTS return the size of the list,
+    public int getSize() {
         return lists.size();
     }
 }

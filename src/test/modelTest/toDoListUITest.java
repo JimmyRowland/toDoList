@@ -53,9 +53,9 @@ public class toDoListUITest {
                 " 3: listToBeRemoved\n" +
                 " 4: " + listName + "\n" +
                 " 5: willNotBeDeleted");
-        assertEquals(toDoList.getLength(), 6);
+        assertEquals(toDoList.getSize(), 6);
         toDoList.removeList(3);
-        assertEquals(toDoList.getLength(), 5);
+        assertEquals(toDoList.getSize(), 5);
 
 //        ToDoListUI1.printLists(toDoList);
         assertEquals(toDoList.getListsPrint(), listName + "\n" +

@@ -18,10 +18,13 @@ public class Task {
         deleted = false;
     }
 
+    // EFFECTS return the stateDate of the task as string
     public String getStartDate() {
         return startDate.toString();
     }
 
+    // EFFECTS return index's date in the dateArrayList
+    // REQUIRES 0<=index < dateArrayList.size()
     public String getDateFromArray(int index) {
         return dateArrayList.get(index).toString();
     }
