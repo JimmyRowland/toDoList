@@ -37,7 +37,8 @@ public class List {
             result = result.concat("\n\t" + i + ": " + tasks.get(i).getName() + tasks.get(i).getToBeDone());
         }
         for (int i = 0; i < doneTasks.size(); i++) {
-            result = result.concat("\nDone\n\t" + i + ": " + doneTasks.get(i).getName() + doneTasks.get(i).getToBeDone());
+            result = result.concat(
+                    "\nDone\n\t" + i + ": " + doneTasks.get(i).getName() + doneTasks.get(i).getToBeDone());
         }
         return result;
     }
@@ -55,16 +56,18 @@ public class List {
 
     //REQUIRES 0<taskIndex<tasks.size()
     //MODIFIES this
-    //EFFECTS set indexth task's (in the tasks list) toBeDone status to !toBeDone and remove the task from tasks list and add it to doneTasks list
+    //EFFECTS set indexth task's (in the tasks list) toBeDone status to !toBeDone and remove
+    // the task from tasks list and add it to doneTasks list
     public void setTaskDone(int index) {
         tasks.get(index).setDoneStatus();
         doneTasks.add(tasks.get(index));
         tasks.remove(index);
     }
 
-    //REQUIRES 0<taskIndex<tasks.size()
-    //MODIFIES this
-    //EFFECTS set indexth task's (in hte doneTasks list) toBeDone status to !toBeDone, remove the task from doneTasks list and add it to tasks list
+    // REQUIRES 0<taskIndex<tasks.size()
+    // MODIFIES this
+    // EFFECTS set indexth task's (in hte doneTasks list) toBeDone status to !toBeDone, remove the task from doneTasks
+    // list and add it to tasks list
     public void setTaskUndone(int index) {
         doneTasks.get(index).setDoneStatus();
         tasks.add(doneTasks.get(index));

@@ -14,11 +14,13 @@ public class ToDoListUI {
     }
 
     private void printOutMainMenu() {
-        System.out.println("\"what would you like to do [1] create a list, [2] delete an item [3] view a list [x] exit\"");
+        System.out.println("\"what would you like to do [1] create a list, [2] delete an item "
+                + "[3] view a list [x] exit\"");
     }
 
     private void printoutListMenu() {
-        System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item [3] delete an item [4] return to top menu [x] exit");
+        System.out.println("what would you like to do [1] add a to do list item, [2] cross off an item "
+                + "[3] delete an item [4] return to top menu [x] exit");
     }
 
     public void printOutAddList() {
@@ -29,37 +31,37 @@ public class ToDoListUI {
         System.out.println("Please enter your name:\n");
     }
 
-    private void printOutName(ToDoList ToDoList) {
-        System.out.println(ToDoList.getName());
+    private void printOutName(ToDoList toDoList) {
+        System.out.println(toDoList.getName());
     }
 
-    // MODIFIES ToDoList
-    public void seed(ToDoList ToDoList) {
+    // MODIFIES toDoList
+    public void seed(ToDoList toDoList) {
         // Randomize seeding
 //        Random random = new Random();
 //        int r = random.nextInt(3)+2;
         int r = 2;
         int r1 = 2;
         for (int i = 0; i < r; i++) {
-            ToDoList.addList("To do list " + i);
+            toDoList.addList("To do list " + i);
 //            r1 = random.nextInt(3)+2;
             for (int j = 0; j < r1; j++) {
-                ToDoList.addTask(i, "Task" + j);
+                toDoList.addTask(i, "Task" + j);
             }
         }
     }
 
-    private void printLists(ToDoList ToDoList) {
-//        printOutName(ToDoList);
-//        for(int i=0; i<ToDoList.getLength();i++){
-        System.out.println(ToDoList.getListsPrint());
+    private void printLists(ToDoList toDoList) {
+//        printOutName(toDoList);
+//        for(int i=0; i<toDoList.getLength();i++){
+        System.out.println(toDoList.getListsPrint());
 //        }
     }
 
-    private void printTask(ToDoList ToDoList, int index) {
-        printOutName(ToDoList);
-        System.out.println(ToDoList.getName());
-        System.out.println(ToDoList.getTasksPrint(index));
+    private void printTask(ToDoList toDoList, int index) {
+        printOutName(toDoList);
+        System.out.println(toDoList.getName());
+        System.out.println(toDoList.getTasksPrint(index));
     }
 
     private void printOutPromptInputListName() {

@@ -26,8 +26,9 @@ public class Task {
         return dateArrayList.get(index).toString();
     }
 
-    //MODIFIES this
-    //EFFECTS if there is a single parameter, set endDate as the parameter. If there is no parameter, set current time as endDate.
+    // MODIFIES this
+    // EFFECTS if there is a single parameter, set endDate as the parameter. If there is no parameter, set current
+    // time as endDate.
     public void setReminder(Calendar... dates) {
         if (dates.length == 1) {
             endDate = dates[0];
