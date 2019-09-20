@@ -41,6 +41,7 @@ public class ToDoList {
     public String getListName(int index) {
         return lists.get(index).getName();
     }
+
     // EFFECTS return a string that contains the toDOLIst name and all its lists
     public String getListsPrint() {
         String result = name;
@@ -55,6 +56,7 @@ public class ToDoList {
     public void addList(String list) {
         lists.add(new List(list));
     }
+
     // EFFECTS return the name of the list
     public String getName() {
         return name;
@@ -72,6 +74,7 @@ public class ToDoList {
     public void addTask(int listIndex, String taskName) {
         lists.get(listIndex).addTask(taskName);
     }
+
     // EFFECTS return the size of the list,
     public int getSize() {
         return lists.size();
