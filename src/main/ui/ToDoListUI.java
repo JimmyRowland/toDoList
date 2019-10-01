@@ -2,9 +2,40 @@ package ui;
 
 import model.ToDoList;
 
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.function.Function;
 
 public class ToDoListUI {
+
+    private HashMap<String, Runnable> primaryMenuCommands = new HashMap<>();
+    private HashMap<String, Runnable> secondaryMenuCommands = new HashMap<>();
+
+
+    private void fillPrimaryMenuCommands(){
+
+    }
+
+    private void runRunnableWithParameters(){
+
+    }
+
+//    private void fillSecondaryMenuCommands(){
+////        ToDoList userToDoList = new ToDoList("sdfsg");
+//        secondaryMenuCommands.put("1", (ToDoList userToDoList, int index)->secondaryMenuAddTask(userToDoList, index));
+//        // error I want to add something like a pointer to the hashmap. I can't find such
+//        // a working pointer. Method pointer to runnable does not help as I still need to pass parameters here and runnable.run() does not take parameter
+//        // for the same reason, lambda function does not take parameters
+//        secondaryMenuCommands.put("2",()->secondaryMenuAddTask(userToDoList, index));
+//        // valid but not what I want. I want to specify parameters when I invoke the method
+//        secondaryMenuCommands.put("3",);
+//        secondaryMenuCommands.put("4");
+//        secondaryMenuCommands.get("1").run();
+//    }
+
+
+
+
     // EFFECTS print out Welcome to 'creative todolist application\
     private void printSomething() {
         System.out.println("Welcome to \'creative todolist application\'");
@@ -219,13 +250,15 @@ public class ToDoListUI {
 //        return userInput;
     }
 
+
+
     //MODIFIES userToDoList
     //EFFECTS Add list to userToDoList, remove list to userToDoList, or move to secondary menu
     private void runMainMenu(ToDoList userToDoList) {
         Scanner input = new Scanner(System.in);
-        String userInput;
+        String userInput="1";
         String userInputTasks = "";
-        userInput = "1";
+//        userInput = "1";
         while (!userInput.equals("x")) {
             printLists(userToDoList);
             printOutMainMenu();
@@ -311,6 +344,7 @@ public class ToDoListUI {
 //    }
     //EFFECT create new ToDoList and open the topMenu
     void run() {
+
         printSomething();
         printSomethingMoreCreative();
         printOutInitiation();
@@ -321,7 +355,6 @@ public class ToDoListUI {
 //        printLists(userToDoList);
 //        printOutMainMenu();
 //        userInput=input.next();
-
         runMainMenu(userToDoList);
 
 
