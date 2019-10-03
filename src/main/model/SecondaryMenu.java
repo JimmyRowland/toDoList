@@ -20,10 +20,6 @@ public class SecondaryMenu extends ToDoListMenu {
         }));
     }
 
-    @Override
-    boolean isValidUserInput() {
-        return containsKey(getMenuInput());
-    }
 
     @Override
     protected boolean isEnd() {
@@ -36,42 +32,36 @@ public class SecondaryMenu extends ToDoListMenu {
         }
     }
 
-//    // EFFECTS Print out Input task name
-//    private void printOutInputTask() {
-//        System.out.println("Input task name");
-//    }
-
 
     // EFFECTS Add a task to a list
     // MODIFIES list
     private void secondaryMenuAddTask() {
         System.out.println("Input task name");
         list.addTask(input.next());
-        printTasks();
     }
 
     // EFFECTS Move the selected task to done list
     // MODIFIES list
     private void secondaryMenuSetTaskDone() {
-        printOutPromptInputIndex();
         int userInputIndex = takeUserInputIndex(list.getSize());
         list.setTaskDone(userInputIndex);
-        printTasks();
+
     }
 
     // EFFECTS Remove the selected task
     // MODIFIES useToDoList
     // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuRemoveTask() {
-        printOutPromptInputIndex();
         int userInputIndex = takeUserInputIndex(list.getSize());
         list.removeTask(userInputIndex);
-        printTasks();
+
 
     }
 
+
     // EFFECTS Print out the list's tasks
-    private void printTasks() {
+    @Override
+    void printItems() {
         System.out.println(list.getListPrint());
     }
 
