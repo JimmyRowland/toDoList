@@ -71,7 +71,7 @@ public abstract class ToDoListMenu implements Menu, MenuEditor {
     }
 
     // EFFECTS Print out Please enter the index
-    void printOutPromptInputIndex() {
+    private void printOutPromptInputIndex() {
         System.out.println("Please enter the index");
     }
 
