@@ -24,7 +24,6 @@ public class ToDoListUI {
     }
 
 
-
     // MODIFIES ToDoList
     // EFFECTS Fill the toDoList by a 2 List with 2 tasks in each list
     public void seed(ToDoListContainer toDoListContainer) {

@@ -98,7 +98,7 @@ public class PrimaryMenu extends ToDoListMenu {
     private JSONObject getTaskJsonObject(Task task) {
         JSONObject taskJson = new JSONObject();
         taskJson.put("toBeDone", task.getToBeDone());
-        taskJson.put("deleted",task.getDeleted());
+        taskJson.put("deleted", task.getDeleted());
         taskJson.put("startDate", task.getStartDate());
         taskJson.put("endDate", task.getDueDate());
         return taskJson;

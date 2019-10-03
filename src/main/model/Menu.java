@@ -3,7 +3,7 @@ package model;
 public interface Menu {
     void run();
 
-//    void init();
+    //    void init();
 //
     void takeUserInput();
 
