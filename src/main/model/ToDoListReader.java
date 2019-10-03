@@ -14,7 +14,8 @@ public class ToDoListReader {
 
     public ToDoListContainer read(String path) {
         JSONObject toDoListContainerJson = getToDoListContainerFromJson(path);
-        ToDoListContainer toDoListContainer = getContainerFromJsonObject(toDoListContainerJson.getJSONArray("container"));
+        ToDoListContainer toDoListContainer = getContainerFromJsonObject(
+                toDoListContainerJson.getJSONArray("container"));
         toDoListContainer.setName(toDoListContainerJson.getString("name"));
         return toDoListContainer;
     }

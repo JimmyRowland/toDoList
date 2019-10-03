@@ -11,6 +11,7 @@ public class ToDoList extends ListAbstract {
         deleted = false;
         this.tasks = new TaskList();
     }
+
     public ToDoList(String name, TaskList tasks, TaskList doneTasks) {
         super(name);
         this.doneTasks = doneTasks;
