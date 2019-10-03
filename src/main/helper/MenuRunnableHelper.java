@@ -1,34 +1,34 @@
 package helper;
 
-import model.ToDoList;
+import model.ToDoListContainer;
 
 public class MenuRunnableHelper implements RunnableWithParameters {
     private int index;
-    private ToDoList userToDoList;
+    private ToDoListContainer userToDoListContainer;
 
-    public MenuRunnableHelper(ToDoList userToDoList, int index){
+    public MenuRunnableHelper(ToDoListContainer userToDoListContainer, int index){
         this.index = index;
-        this.userToDoList = userToDoList;
+        this.userToDoListContainer = userToDoListContainer;
 
     }
 
     @Override
-    public void runWithToDoList(ToDoList userToDoList) {
+    public void runWithToDoList(ToDoListContainer userToDoListContainer) {
 
     }
 
     @Override
-    public void runWithToDoListAndIndex1(ToDoList userToDoList, int index) {
+    public void runWithToDoListAndIndex1(ToDoListContainer userToDoListContainer, int index) {
 
     }
 
     @Override
-    public void runWithToDoListAndIndex2(ToDoList userToDoList, int index) {
+    public void runWithToDoListAndIndex2(ToDoListContainer userToDoListContainer, int index) {
 
     }
 
     @Override
-    public void runWithToDoListAndIndex3(ToDoList userToDoList, int index) {
+    public void runWithToDoListAndIndex3(ToDoListContainer userToDoListContainer, int index) {
 
     }
 

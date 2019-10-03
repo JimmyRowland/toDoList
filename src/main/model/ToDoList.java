@@ -3,80 +3,94 @@ package model;
 import java.util.ArrayList;
 
 public class ToDoList {
-    private ArrayList<List> lists;
+    private ArrayList<Task> tasks;
     private String name;
     private Boolean deleted;
+    private ArrayList<Task> doneTasks;
 
     public ToDoList(String name) {
-        this.lists = new ArrayList<List>();
+        this.tasks = new ArrayList<Task>();
+        this.doneTasks = new ArrayList<Task>();
         this.name = name;
+        deleted = false;
     }
 
-    //REQUIRES 0<listIndex<lists.size() 0<taskIndex<lists[listIndex].size()
-    // EFFECTS return listIndexth list's taskIndexth task's name in the todolist
-    public String getTask(int listIndex, int taskIndex) {
-        return lists.get(listIndex).getTaskName(taskIndex);
+    //REQUIRES 0<taskIndex<tasks.size()
+    //EFFECTS return the indexth task name in the list
+    public String getTaskName(int index) {
+        return tasks.get(index).getName();
     }
 
-    //REQUIRES 0<listIndex<lists.size()
-    // EFFECTS return a message to user which contains list's name and all the tasks in the list
-    public String getTasksPrint(int index) {
-        return lists.get(index).getListPrint();
+    //REQUIRES 0<taskIndex<tasks.size()
+    public Task getTask(int index) {
+        return tasks.get(index);
     }
 
-    //REQUIRES 0<listIndex<lists.size()
-    // EFFECTS return index's list in the todolist app
-    public List getList(int index) {
-        return lists.get(index);
-    }
 
-    //REQUIRES 0<listIndex<lists.size()
-    // EFFECTS remove indexth list in the todolist app.
-    public void removeList(int index) {
-        lists.remove(index);
-    }
-
-    //REQUIRES 0<listIndex<lists.size()
-    // EFFECTS return index's list name in the toDoList
-    public String getListName(int index) {
-        return lists.get(index).getName();
-    }
-
-    // EFFECTS return a string that contains the toDOLIst name and all its lists
-    public String getListsPrint() {
+    //    public void deleteTask(int index) {
+//        tasks.remove(index);
+//    }
+    //EFFECTS return a print ready task string
+    public String getListPrint() {
         String result = name;
-        for (int i = 0; i < lists.size(); i++) {
-            result = result.concat("\n " + i + ": " + lists.get(i).getName());
+        for (int i = 0; i < tasks.size(); i++) {
+            result = result.concat("\n\t" + i + ": " + tasks.get(i).getName() + tasks.get(i).getToBeDone());
+        }
+        for (int i = 0; i < doneTasks.size(); i++) {
+            result = result.concat(
+                    "\nDone\n\t" + i + ": " + doneTasks.get(i).getName() + doneTasks.get(i).getToBeDone());
         }
         return result;
     }
 
-    //MODIFIES this
-    // EFFECTS Add a list named list to toDoList
-    public void addList(String list) {
-        lists.add(new List(list));
+    //EFFECTS return the length of the list
+    public int getSize() {
+        return tasks.size();
     }
 
-    // EFFECTS return the name of the list
+    //MODIFIES this
+    //EFFECTS Add a task named task to the end of the list
+    public void addTask(String task) {
+        tasks.add(new Task(task));
+    }
+
+    //REQUIRES 0<taskIndex<tasks.size()
+    //MODIFIES this
+    //EFFECTS set indexth task's (in the tasks list) toBeDone status to !toBeDone and remove
+    // the task from tasks list and add it to doneTasks list
+    public void setTaskDone(int index) {
+        tasks.get(index).setDoneStatus();
+        doneTasks.add(tasks.get(index));
+        tasks.remove(index);
+    }
+
+    // REQUIRES 0<taskIndex<tasks.size()
+    // MODIFIES this
+    // EFFECTS set indexth task's (in hte doneTasks list) toBeDone status to !toBeDone, remove the task from doneTasks
+    // list and add it to tasks list
+    public void setTaskUndone(int index) {
+        doneTasks.get(index).setDoneStatus();
+        tasks.add(doneTasks.get(index));
+        doneTasks.remove(index);
+    }
+
+    //    public Boolean getDeleted() {
+//        return deleted;
+//    }
+    //MODIFIES this
+    //EFFECTS remove index's task from tasks list
+    public void removeTask(int index) {
+        tasks.remove(index);
+    }
+
+    //EFFECTS return list's name
     public String getName() {
         return name;
     }
 
     //MODIFIES this
-    // EFFECTS Set the list name to name
+    //EFFECTS set list's name to name
     public void setName(String name) {
         this.name = name;
-    }
-
-    //MODIFIES this
-    //REQUIRES 0<listIndex<lists.size()
-    // EFFECTS Add a task named taskName to listIndexth list
-    public void addTask(int listIndex, String taskName) {
-        lists.get(listIndex).addTask(taskName);
-    }
-
-    // EFFECTS return the size of the list,
-    public int getSize() {
-        return lists.size();
     }
 }

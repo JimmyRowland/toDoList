@@ -1,20 +1,20 @@
 package modelTest;
 
-import model.List;
+import model.ToDoList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ListTest {
-    List list;
+class ToDoListTest {
+    ToDoList toDoList;
 
     @BeforeEach
     void setUp() {
-        list = new List("testList");
-        list.addTask("taskToBeDeleted");
-        list.addTask("doneTask");
-        list.addTask("taskNotDone");
+        toDoList = new ToDoList("testList");
+        toDoList.addTask("taskToBeDeleted");
+        toDoList.addTask("doneTask");
+        toDoList.addTask("taskNotDone");
 
     }
 
@@ -32,12 +32,12 @@ class ListTest {
 
     @Test
     void addTask() {
-        assertEquals(list.getListPrint(), "testList\n" +
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        list.addTask("addedTask");
-        assertEquals(list.getListPrint(), "testList\n" +
+        toDoList.addTask("addedTask");
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue\n" +
@@ -46,12 +46,12 @@ class ListTest {
 
     @Test
     void setTaskDone() {
-        assertEquals(list.getListPrint(), "testList\n" +
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        list.setTaskDone(1);
-        assertEquals(list.getListPrint(), "testList\n" +
+        toDoList.setTaskDone(1);
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: taskNotDonetrue\n" + "Done\n" +
                 "\t0: doneTaskfalse");
@@ -59,13 +59,13 @@ class ListTest {
 
     @Test
     void setTaskUndone() {
-        assertEquals(list.getListPrint(), "testList\n" +
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        list.setTaskDone(2);
-        list.setTaskUndone(0);
-        assertEquals(list.getListPrint(), "testList\n" +
+        toDoList.setTaskDone(2);
+        toDoList.setTaskUndone(0);
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
@@ -73,24 +73,24 @@ class ListTest {
 
     @Test
     void removeTask() {
-        assertEquals(list.getListPrint(), "testList\n" +
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        list.removeTask(0);
-        assertEquals(list.getListPrint(), "testList\n" +
+        toDoList.removeTask(0);
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: doneTasktrue\n" +
                 "\t1: taskNotDonetrue");
     }
 
     @Test
     void setName() {
-        assertEquals(list.getListPrint(), "testList\n" +
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        list.setName("newName");
-        assertEquals(list.getListPrint(), "newName\n" +
+        toDoList.setName("newName");
+        assertEquals(toDoList.getListPrint(), "newName\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
@@ -98,20 +98,20 @@ class ListTest {
 
     @Test
     void getTaskName() {
-        list.addTask("someTask");
-        assertEquals(list.getTaskName(3), "someTask");
+        toDoList.addTask("someTask");
+        assertEquals(toDoList.getTaskName(3), "someTask");
     }
 
     @Test
     void getTask() {
-        list.addTask("someTask");
-        assertEquals(list.getTask(3).getName(), "someTask");
+        toDoList.addTask("someTask");
+        assertEquals(toDoList.getTask(3).getName(), "someTask");
     }
 
     @Test
     void getListPrint() {
-        list.addTask("someTask");
-        assertEquals(list.getListPrint(), "testList\n" +
+        toDoList.addTask("someTask");
+        assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue\n" +
@@ -120,13 +120,13 @@ class ListTest {
 
     @Test
     void getSize() {
-        assertEquals(list.getSize(), 3);
-        list.addTask("someTask");
-        assertEquals(list.getSize(), 4);
+        assertEquals(toDoList.getSize(), 3);
+        toDoList.addTask("someTask");
+        assertEquals(toDoList.getSize(), 4);
     }
 
     @Test
     void getName() {
-        assertEquals(list.getName(), "testList");
+        assertEquals(toDoList.getName(), "testList");
     }
 }

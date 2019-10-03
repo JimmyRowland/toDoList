@@ -1,12 +1,12 @@
 package helper;
 
-import model.ToDoList;
+import model.ToDoListContainer;
 
 public interface RunnableWithParameters extends Runnable {
 
-    void runWithToDoList(ToDoList userToDoList);
+    void runWithToDoList(ToDoListContainer userToDoListContainer);
 
-    void runWithToDoListAndIndex1(ToDoList userToDoList, int index);
-    void runWithToDoListAndIndex2(ToDoList userToDoList, int index);
-    void runWithToDoListAndIndex3(ToDoList userToDoList, int index);
+    void runWithToDoListAndIndex1(ToDoListContainer userToDoListContainer, int index);
+    void runWithToDoListAndIndex2(ToDoListContainer userToDoListContainer, int index);
+    void runWithToDoListAndIndex3(ToDoListContainer userToDoListContainer, int index);
 }
