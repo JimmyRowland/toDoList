@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-public class Task {
-    private String name;
+public class Task extends ItemAbstract {
     private Boolean toBeDone;
     private Boolean deleted;
     private Calendar startDate;
@@ -13,7 +12,7 @@ public class Task {
     private ArrayList<Calendar> dateArrayList;
 
     public Task(String name) {
-        this.name = name;
+        super(name);
         toBeDone = true;
         deleted = false;
     }
@@ -61,16 +60,6 @@ public class Task {
         return endDate.toString();
     }
 
-    //EFFECTS return task's name
-    public String getName() {
-        return name;
-    }
-
-    // MODIFIES this
-    // EFFECTS set task's name to name
-    public void setName(String name) {
-        this.name = name;
-    }
 
     // EFFECTS if the task has not been done return true, otherwise return false
     public Boolean getToBeDone() {

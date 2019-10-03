@@ -12,9 +12,9 @@ class ToDoListTest {
     @BeforeEach
     void setUp() {
         toDoList = new ToDoList("testList");
-        toDoList.addTask("taskToBeDeleted");
-        toDoList.addTask("doneTask");
-        toDoList.addTask("taskNotDone");
+        toDoList.add("taskToBeDeleted");
+        toDoList.add("doneTask");
+        toDoList.add("taskNotDone");
 
     }
 
@@ -36,7 +36,7 @@ class ToDoListTest {
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        toDoList.addTask("addedTask");
+        toDoList.add("addedTask");
         assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
@@ -77,7 +77,7 @@ class ToDoListTest {
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
                 "\t2: taskNotDonetrue");
-        toDoList.removeTask(0);
+        toDoList.remove(0);
         assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: doneTasktrue\n" +
                 "\t1: taskNotDonetrue");
@@ -98,19 +98,19 @@ class ToDoListTest {
 
     @Test
     void getTaskName() {
-        toDoList.addTask("someTask");
-        assertEquals(toDoList.getTaskName(3), "someTask");
+        toDoList.add("someTask");
+        assertEquals(toDoList.getItemName(3), "someTask");
     }
 
     @Test
     void getTask() {
-        toDoList.addTask("someTask");
+        toDoList.add("someTask");
         assertEquals(toDoList.getTask(3).getName(), "someTask");
     }
 
     @Test
     void getListPrint() {
-        toDoList.addTask("someTask");
+        toDoList.add("someTask");
         assertEquals(toDoList.getListPrint(), "testList\n" +
                 "\t0: taskToBeDeletedtrue\n" +
                 "\t1: doneTasktrue\n" +
@@ -120,9 +120,9 @@ class ToDoListTest {
 
     @Test
     void getSize() {
-        assertEquals(toDoList.getSize(), 3);
-        toDoList.addTask("someTask");
-        assertEquals(toDoList.getSize(), 4);
+        assertEquals(toDoList.size(), 3);
+        toDoList.add("someTask");
+        assertEquals(toDoList.size(), 4);
     }
 
     @Test

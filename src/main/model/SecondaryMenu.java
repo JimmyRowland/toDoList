@@ -37,13 +37,13 @@ public class SecondaryMenu extends ToDoListMenu {
     // MODIFIES list
     private void secondaryMenuAddTask() {
         System.out.println("Input task name");
-        list.addTask(input.next());
+        list.add(input.next());
     }
 
     // EFFECTS Move the selected task to done list
     // MODIFIES list
     private void secondaryMenuSetTaskDone() {
-        int userInputIndex = takeUserInputIndex(list.getSize());
+        int userInputIndex = takeUserInputIndex(list.size());
         list.setTaskDone(userInputIndex);
 
     }
@@ -52,8 +52,8 @@ public class SecondaryMenu extends ToDoListMenu {
     // MODIFIES useToDoList
     // REQUIRES 0<=index<userToDoList.getList(index).getSize()
     private void secondaryMenuRemoveTask() {
-        int userInputIndex = takeUserInputIndex(list.getSize());
-        list.removeTask(userInputIndex);
+        int userInputIndex = takeUserInputIndex(list.size());
+        list.remove(userInputIndex);
 
 
     }

@@ -2,28 +2,16 @@ package model;
 
 import java.util.ArrayList;
 
-public class ToDoList {
-    private ArrayList<Task> tasks;
-    private String name;
+public class ToDoList extends ListAbstract {
     private Boolean deleted;
     private ArrayList<Task> doneTasks;
+    private ArrayList<Task> tasks;
 
     public ToDoList(String name) {
-        this.tasks = new ArrayList<Task>();
+        super(name);
         this.doneTasks = new ArrayList<Task>();
-        this.name = name;
         deleted = false;
-    }
-
-    //REQUIRES 0<taskIndex<tasks.size()
-    //EFFECTS return the indexth task name in the list
-    public String getTaskName(int index) {
-        return tasks.get(index).getName();
-    }
-
-    //REQUIRES 0<taskIndex<tasks.size()
-    public Task getTask(int index) {
-        return tasks.get(index);
+        this.tasks = new ArrayList<>();
     }
 
 
@@ -32,9 +20,9 @@ public class ToDoList {
 //    }
     //EFFECTS return a print ready task string
     public String getListPrint() {
-        String result = name;
-        for (int i = 0; i < tasks.size(); i++) {
-            result = result.concat("\n\t" + i + ": " + tasks.get(i).getName() + tasks.get(i).getToBeDone());
+        String result = getName();
+        for (int i = 0; i < size(); i++) {
+            result = result.concat("\n\t" + i + ": " + getItemName(i) + getTask(i).getToBeDone());
         }
         for (int i = 0; i < doneTasks.size(); i++) {
             result = result.concat(
@@ -44,13 +32,14 @@ public class ToDoList {
     }
 
     //EFFECTS return the length of the list
-    public int getSize() {
+    public int size() {
         return tasks.size();
     }
 
     //MODIFIES this
     //EFFECTS Add a task named task to the end of the list
-    public void addTask(String task) {
+    @Override
+    public void add(String task) {
         tasks.add(new Task(task));
     }
 
@@ -79,18 +68,19 @@ public class ToDoList {
 //    }
     //MODIFIES this
     //EFFECTS remove index's task from tasks list
-    public void removeTask(int index) {
+    @Override
+    public void remove(int index) {
         tasks.remove(index);
     }
 
-    //EFFECTS return list's name
-    public String getName() {
-        return name;
+    //REQUIRES 0<taskIndex<tasks.size()
+    //EFFECTS return the indexth task name in the list
+    public String getItemName(int index) {
+        return tasks.get(index).getName();
     }
 
-    //MODIFIES this
-    //EFFECTS set list's name to name
-    public void setName(String name) {
-        this.name = name;
+    //REQUIRES 0<taskIndex<tasks.size()
+    public Task getTask(int index) {
+        return tasks.get(index);
     }
 }

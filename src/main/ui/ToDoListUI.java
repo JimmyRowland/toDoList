@@ -34,7 +34,7 @@ public class ToDoListUI {
         int r = 2;
         int r1 = 2;
         for (int i = 0; i < r; i++) {
-            toDoListContainer.addList("To do list " + i);
+            toDoListContainer.add("To do list " + i);
 //            r1 = random.nextInt(3)+2;
             for (int j = 0; j < r1; j++) {
                 toDoListContainer.addTask(i, "Task" + j);

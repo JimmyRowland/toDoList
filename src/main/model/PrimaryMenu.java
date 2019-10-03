@@ -33,19 +33,19 @@ public class PrimaryMenu extends ToDoListMenu {
     // MODIFIES list
     private void primaryMenuAddList() {
         System.out.println("Input list name");
-        toDoListContainer.addList(input.next());
+        toDoListContainer.add(input.next());
     }
 
     // EFFECTS Move the selected task to done list
     // MODIFIES list
     private void primaryMenuRemoveList() {
-        int userInputIndex = takeUserInputIndex(toDoListContainer.getSize());
-        toDoListContainer.removeList(userInputIndex);
+        int userInputIndex = takeUserInputIndex(toDoListContainer.size());
+        toDoListContainer.remove(userInputIndex);
 
     }
 
     private void primaryMenuViewList() {
-        int userInputIndex = takeUserInputIndex(toDoListContainer.getSize());
+        int userInputIndex = takeUserInputIndex(toDoListContainer.size());
         SecondaryMenu secondaryMenu = new SecondaryMenu(toDoListContainer.getList(userInputIndex));
         secondaryMenu.run();
     }
