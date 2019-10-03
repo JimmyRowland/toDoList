@@ -1,4 +1,6 @@
-package model;
+package ui;
+
+import model.ToDoList;
 
 public class SecondaryMenu extends ToDoListMenu {
     private ToDoList list;
@@ -14,7 +16,8 @@ public class SecondaryMenu extends ToDoListMenu {
         addMenuItem("1", new MenuOption("Add a task", this::secondaryMenuAddTask));
         addMenuItem("2", new MenuOption("Set a task done", this::secondaryMenuSetTaskDone));
         addMenuItem("3", new MenuOption("Remove a task", this::secondaryMenuRemoveTask));
-        addMenuItem("4", new MenuOption("Return to the top menu", () -> {
+        addMenuItem("4", new MenuOption("Rename the list", this::setName));
+        addMenuItem("5", new MenuOption("Return to the top menu", () -> {
         }));
         addMenuItem("x", new MenuOption("Exit", () -> {
         }));
@@ -24,7 +27,7 @@ public class SecondaryMenu extends ToDoListMenu {
     @Override
     protected boolean isEnd() {
         switch (getMenuInput()) {
-            case "4":
+            case "5":
             case "x":
                 return true;
             default:
@@ -63,6 +66,12 @@ public class SecondaryMenu extends ToDoListMenu {
     @Override
     void printItems() {
         System.out.println(list.getListPrint());
+    }
+
+    void setName() {
+        printOutInputName();
+        input.nextLine();
+        list.setName(input.nextLine());
     }
 
 }

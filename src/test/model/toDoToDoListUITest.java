@@ -1,4 +1,4 @@
-package modelTest;
+package model;
 
 import model.ToDoListContainer;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class toDoToDoListUITest {
 
-    ToDoListUI ToDoListUI1;
-    ToDoListContainer toDoListContainer;
+    private ToDoListUI ToDoListUI1;
+    private ToDoListContainer toDoListContainer;
 
     private void init(String name) {
         toDoListContainer = new ToDoListContainer(name);

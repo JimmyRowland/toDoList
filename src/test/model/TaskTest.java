@@ -1,4 +1,4 @@
-package modelTest;
+package model;
 
 import model.Task;
 import org.junit.jupiter.api.BeforeEach;
@@ -39,7 +39,7 @@ class TaskTest {
 
     @Test
     void setDoneStatus() {
-        task.setDoneStatus();
+        task.setToBeDone();
         assertFalse(task.getToBeDone());
     }
 

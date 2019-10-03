@@ -1,4 +1,8 @@
-package model;
+package ui;
+
+import ui.Menu;
+import ui.MenuEditor;
+import ui.MenuOption;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -85,6 +89,10 @@ public abstract class ToDoListMenu implements Menu, MenuEditor {
         return userInputIndex;
     }
 
+    // EFFECTS Print out Please enter your name:
+    void printOutInputName() {
+        System.out.println("Please enter your name:\n");
+    }
 
     protected abstract boolean isEnd();
 

@@ -1,6 +1,5 @@
 package ui;
 
-import model.PrimaryMenu;
 import model.ToDoListContainer;
 
 import java.util.Scanner;
@@ -15,12 +14,6 @@ public class ToDoListUI {
     // EFFECTS Print out Todolist is Very Creative
     private void printSomethingMoreCreative() {
         System.out.println("Todolist is Very Creative");
-    }
-
-
-    // EFFECTS Print out Please enter your name:
-    private void printOutInitiation() {
-        System.out.println("Please enter your name:\n");
     }
 
 
@@ -47,12 +40,12 @@ public class ToDoListUI {
 
         printSomething();
         printSomethingMoreCreative();
-        printOutInitiation();
-        Scanner input = new Scanner(System.in);
-        String userInput = input.next();
-        ToDoListContainer userToDoListContainer = new ToDoListContainer(userInput);
-        seed(userToDoListContainer);
-        PrimaryMenu primaryMenu = new PrimaryMenu(userToDoListContainer);
+//        printOutInitiation();
+//        Scanner input = new Scanner(System.in);
+//        String userInput = input.next();
+//        ToDoListContainer userToDoListContainer = new ToDoListContainer(userInput);
+//        seed(userToDoListContainer);
+        PrimaryMenu primaryMenu = new PrimaryMenu();
         primaryMenu.run();
 
 

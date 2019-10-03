@@ -1,4 +1,4 @@
-package model;
+package ui;
 
 class MenuOption {
     private Runnable action;

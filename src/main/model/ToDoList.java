@@ -11,6 +11,12 @@ public class ToDoList extends ListAbstract {
         deleted = false;
         this.tasks = new TaskList();
     }
+    public ToDoList(String name, TaskList tasks, TaskList doneTasks) {
+        super(name);
+        this.doneTasks = doneTasks;
+        deleted = false;
+        this.tasks = tasks;
+    }
 
 
     //EFFECTS return a print ready task string
@@ -41,7 +47,7 @@ public class ToDoList extends ListAbstract {
     //EFFECTS set indexth task's (in the tasks list) toBeDone status to !toBeDone and remove
     // the task from tasks list and add it to doneTasks list
     public void setTaskDone(int index) {
-        tasks.getTask(index).setDoneStatus();
+        tasks.getTask(index).setToBeDone();
         doneTasks.add(tasks.getTask(index));
         tasks.remove(index);
     }
@@ -51,7 +57,7 @@ public class ToDoList extends ListAbstract {
     // EFFECTS set indexth task's (in hte doneTasks list) toBeDone status to !toBeDone, remove the task from doneTasks
     // list and add it to tasks list
     public void setTaskUndone(int index) {
-        doneTasks.getTask(index).setDoneStatus();
+        doneTasks.getTask(index).setToBeDone();
         tasks.add(doneTasks.getTask(index));
         doneTasks.remove(index);
     }

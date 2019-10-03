@@ -9,8 +9,14 @@ public class ToDoListContainer extends ListAbstract {
     public ToDoListContainer(String name) {
         super(name);
         this.toDoLists = new ArrayList<ToDoList>();
-
     }
+
+    ToDoListContainer(String name, ArrayList<ToDoList> toDoLists) {
+        super(name);
+        this.toDoLists = toDoLists;
+    }
+
+    ;
 
     //REQUIRES 0<listIndex<lists.size() 0<taskIndex<lists[listIndex].size()
     // EFFECTS return listIndexth list's taskIndexth task's name in the todolist

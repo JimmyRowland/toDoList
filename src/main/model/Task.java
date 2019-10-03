@@ -20,7 +20,7 @@ public class Task extends ItemAbstract {
 
     // EFFECTS return the stateDate of the task as string
     public String getStartDate() {
-        return startDate.toString();
+        return startDate.getTimeInMillis() + "";
     }
 
     // EFFECTS return index's date in the dateArrayList
@@ -59,7 +59,7 @@ public class Task extends ItemAbstract {
 
     //EFFECTS return the due date as string
     public String getDueDate() {
-        return endDate.toString();
+        return endDate.getTimeInMillis() + "";
     }
 
 
@@ -68,17 +68,25 @@ public class Task extends ItemAbstract {
         return toBeDone;
     }
 
+    public void setToBeDone(Boolean bool) {
+        toBeDone = bool;
+    }
+
+    //MODIFIES this
+    // EFFECTS set toBeDone to ! toBeDone
+    public void setToBeDone() {
+        toBeDone = !toBeDone;
+    }
 
     // EFFECTS if the task is deleted, return true. Otherwise return false
     public Boolean getDeleted() {
         return deleted;
     }
 
-    //MODIFIES this
-    // EFFECTS set toBeDone to ! toBeDone
-    public void setDoneStatus() {
-        toBeDone = !toBeDone;
+    public void setDeleted(boolean bool) {
+        deleted = bool;
     }
+
 
     //MODIFIES this
     // EFFECTS set deleted status to !deleted
