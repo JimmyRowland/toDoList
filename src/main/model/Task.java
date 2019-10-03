@@ -15,6 +15,7 @@ public class Task extends ItemAbstract {
         super(name);
         toBeDone = true;
         deleted = false;
+        setReminder();
     }
 
     // EFFECTS return the stateDate of the task as string
@@ -40,6 +41,7 @@ public class Task extends ItemAbstract {
         } else if (dates.length > 2) {
             dateArrayList = new ArrayList<Calendar>(Arrays.asList(dates));
         } else {
+            startDate = Calendar.getInstance();
             endDate = Calendar.getInstance();
         }
     }

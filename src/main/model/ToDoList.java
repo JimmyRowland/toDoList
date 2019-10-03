@@ -1,33 +1,26 @@
 package model;
 
-import java.util.ArrayList;
-
 public class ToDoList extends ListAbstract {
     private Boolean deleted;
-    private ArrayList<Task> doneTasks;
-    private ArrayList<Task> tasks;
+    private TaskList doneTasks;
+    private TaskList tasks;
 
     public ToDoList(String name) {
         super(name);
-        this.doneTasks = new ArrayList<Task>();
+        this.doneTasks = new TaskList();
         deleted = false;
-        this.tasks = new ArrayList<>();
+        this.tasks = new TaskList();
     }
 
 
-    //    public void deleteTask(int index) {
-//        tasks.remove(index);
-//    }
     //EFFECTS return a print ready task string
     public String getListPrint() {
         String result = getName();
-        for (int i = 0; i < size(); i++) {
-            result = result.concat("\n\t" + i + ": " + getItemName(i) + getTask(i).getToBeDone());
+        result = result.concat(tasks.getListPrint());
+        if (doneTasks.size() > 0) {
+            result = result.concat("\nDone").concat(doneTasks.getListPrint());
         }
-        for (int i = 0; i < doneTasks.size(); i++) {
-            result = result.concat(
-                    "\nDone\n\t" + i + ": " + doneTasks.get(i).getName() + doneTasks.get(i).getToBeDone());
-        }
+
         return result;
     }
 
@@ -40,7 +33,7 @@ public class ToDoList extends ListAbstract {
     //EFFECTS Add a task named task to the end of the list
     @Override
     public void add(String task) {
-        tasks.add(new Task(task));
+        tasks.add(task);
     }
 
     //REQUIRES 0<taskIndex<tasks.size()
@@ -48,8 +41,8 @@ public class ToDoList extends ListAbstract {
     //EFFECTS set indexth task's (in the tasks list) toBeDone status to !toBeDone and remove
     // the task from tasks list and add it to doneTasks list
     public void setTaskDone(int index) {
-        tasks.get(index).setDoneStatus();
-        doneTasks.add(tasks.get(index));
+        tasks.getTask(index).setDoneStatus();
+        doneTasks.add(tasks.getTask(index));
         tasks.remove(index);
     }
 
@@ -58,8 +51,8 @@ public class ToDoList extends ListAbstract {
     // EFFECTS set indexth task's (in hte doneTasks list) toBeDone status to !toBeDone, remove the task from doneTasks
     // list and add it to tasks list
     public void setTaskUndone(int index) {
-        doneTasks.get(index).setDoneStatus();
-        tasks.add(doneTasks.get(index));
+        doneTasks.getTask(index).setDoneStatus();
+        tasks.add(doneTasks.getTask(index));
         doneTasks.remove(index);
     }
 
@@ -73,14 +66,24 @@ public class ToDoList extends ListAbstract {
         tasks.remove(index);
     }
 
+
     //REQUIRES 0<taskIndex<tasks.size()
     //EFFECTS return the indexth task name in the list
     public String getItemName(int index) {
-        return tasks.get(index).getName();
+        return tasks.getItemName(index);
     }
+
 
     //REQUIRES 0<taskIndex<tasks.size()
     public Task getTask(int index) {
-        return tasks.get(index);
+        return tasks.getTask(index);
+    }
+
+    public TaskList getDoneTasks() {
+        return doneTasks;
+    }
+
+    public TaskList getToDoTasks() {
+        return tasks;
     }
 }
