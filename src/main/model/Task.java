@@ -26,7 +26,7 @@ public class Task extends ItemAbstract {
     // EFFECTS return index's date in the dateArrayList
     // REQUIRES 0<=index < dateArrayList.size()
     public String getDateFromArray(int index) {
-        return dateArrayList.get(index).toString();
+        return dateArrayList.get(index).getTimeInMillis() + "";
     }
 
     // MODIFIES this

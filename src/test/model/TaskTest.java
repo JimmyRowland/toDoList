@@ -41,12 +41,16 @@ class TaskTest {
     void setDoneStatus() {
         task.setToBeDone();
         assertFalse(task.getToBeDone());
+        task.setToBeDone(true);
+        assertTrue(task.getToBeDone());
     }
 
     @Test
     void setDeleted() {
         task.setDeleted();
         assertTrue(task.getDeleted());
+        task.setDeleted(false);
+        assertFalse(task.getDeleted());
     }
 
     @Test
@@ -79,14 +83,14 @@ class TaskTest {
         Calendar date2 = Calendar.getInstance();
         Calendar date3 = Calendar.getInstance();
         task.setReminder(date1);
-        assertEquals(task.getDueDate(), date1.toString());
+        assertEquals(task.getDueDate(), Long.toString(date1.getTimeInMillis()) );
         task.setReminder(date1, date2);
-        assertEquals(task.getDueDate(), date2.toString());
-        assertEquals(task.getStartDate(), date1.toString());
+        assertEquals(task.getDueDate(), Long.toString( date2.getTimeInMillis()));
+        assertEquals(task.getStartDate(), Long.toString(date1.getTimeInMillis()));
         task.setReminder(date1, date2, date3);
-        assertEquals(task.getDateFromArray(0), date1.toString());
-        assertEquals(task.getDateFromArray(1), date2.toString());
-        assertEquals(task.getDateFromArray(2), date3.toString());
+        assertEquals(task.getDateFromArray(0), Long.toString( date1.getTimeInMillis()));
+        assertEquals(task.getDateFromArray(1), Long.toString( date2.getTimeInMillis()));
+        assertEquals(task.getDateFromArray(2), Long.toString( date3.getTimeInMillis()));
     }
 
 //    @Test
