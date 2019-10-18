@@ -1,8 +1,8 @@
 package ui;
 
-import ui.Menu;
-import ui.MenuEditor;
-import ui.MenuOption;
+import ui.exceptions.InvalidUserInputException;
+import ui.exceptions.UserInputNotANumberException;
+import ui.exceptions.UserInputTooLongException;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -23,18 +23,61 @@ public abstract class ToDoListMenu implements Menu, MenuEditor {
 
     abstract void init();
 
+    // With recursion bad and dumb exceptions
     @Override
     public void takeUserInput() {
-        menuInput = input.next();
-        while (!isValidUserInput()) {
-            System.out.println("Please enter a valid option");
-            menuInput = input.next();
+        try {
+            String output = input.next();
+            menuInput = uselessInputWithException(output);
+        } catch (UserInputTooLongException e) {
+            System.out.println(e.getMessage() + "And you computer is a piece of crap");
+            takeUserInput();
+        } catch (UserInputNotANumberException e) {
+            System.out.println(e.getMessage() + " You dumb");
+            takeUserInput();
+        } catch (InvalidUserInputException e) {
+            System.out.println(e.getMessage());
+            takeUserInput();
+        } finally {
+            System.out.println("Totally printing something useful");
         }
     }
 
-    boolean isValidUserInput() {
-        return menu.containsKey(getMenuInput());
+    public String uselessInputWithException(String output)
+            throws InvalidUserInputException {
+        if (output.length() > 10) {
+            throw new UserInputTooLongException();
+        } else {
+            if (!output.equals("x")) {
+                try {
+                    Integer.parseInt(output);
+                } catch (NumberFormatException e) {
+                    throw new UserInputNotANumberException();
+                }
+            }
+            if (!isValidUserInput(output)) {
+                throw new InvalidUserInputException("Please enter a valid input");
+            }
+        }
+        return output;
     }
+
+    private boolean isValidUserInput(String input) {
+        return menu.containsKey(input);
+    }
+    // No recursion
+//    @Override
+//    public void takeUserInput() {
+//        menuInput = input.next();
+//        while (!isValidUserInput()) {
+//            System.out.println("Please enter a valid option");
+//            menuInput = input.next();
+//        }
+//    }
+//    private boolean isValidUserInput() {
+//        return menu.containsKey(getMenuInput());
+//    }
+
 
     @Override
     public String printMenu() {

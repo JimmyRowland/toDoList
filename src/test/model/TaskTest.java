@@ -84,6 +84,11 @@ class TaskTest {
         Calendar date3 = Calendar.getInstance();
         task.setReminder(date1);
         assertEquals(task.getDueDate(), Long.toString(date1.getTimeInMillis()) );
+        try{
+            task.getStartDate();
+        } catch (NullPointerException e){
+
+        }
         task.setReminder(date1, date2);
         assertEquals(task.getDueDate(), Long.toString( date2.getTimeInMillis()));
         assertEquals(task.getStartDate(), Long.toString(date1.getTimeInMillis()));

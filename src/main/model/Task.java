@@ -35,6 +35,7 @@ public class Task extends ItemAbstract {
     public void setReminder(Calendar... dates) {
         if (dates.length == 1) {
             endDate = dates[0];
+            startDate = null;
         } else if (dates.length == 2) {
             startDate = dates[0];
             endDate = dates[1];

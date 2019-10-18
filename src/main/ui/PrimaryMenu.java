@@ -4,6 +4,8 @@ import model.ToDoListContainer;
 import model.ToDoListReader;
 import model.ToDoListWriter;
 
+import java.io.IOException;
+
 
 public class PrimaryMenu extends ToDoListMenu {
     private ToDoListContainer toDoListContainer;
@@ -67,7 +69,13 @@ public class PrimaryMenu extends ToDoListMenu {
 
     private void readFromFile() {
         ToDoListReader r = new ToDoListReader();
-        this.toDoListContainer = r.read("./data/toDoListData.txt");
+        try {
+            this.toDoListContainer = r.read("./data/toDoListData.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+
     }
 
     // EFFECTS Print out the list's tasks
@@ -76,7 +84,7 @@ public class PrimaryMenu extends ToDoListMenu {
         System.out.println(toDoListContainer.getListsPrint());
     }
 
-    void setName() {
+    private void setName() {
         printOutInputName();
         input.nextLine();
         toDoListContainer.setName(input.nextLine());

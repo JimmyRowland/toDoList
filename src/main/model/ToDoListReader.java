@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 public class ToDoListReader {
 
-    public ToDoListContainer read(String path) {
+    public ToDoListContainer read(String path) throws IOException {
         JSONObject toDoListContainerJson = getToDoListContainerFromJson(path);
         ToDoListContainer toDoListContainer = getContainerFromJsonObject(
                 toDoListContainerJson.getJSONArray("container"));
@@ -20,16 +20,12 @@ public class ToDoListReader {
         return toDoListContainer;
     }
 
-    private JSONObject getToDoListContainerFromJson(String path) {
+    private JSONObject getToDoListContainerFromJson(String path) throws IOException {
         String jsonString = "";
-        try {
-            File file = new File(path);
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            jsonString = br.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        File file = new File(path);
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        jsonString = br.readLine();
 
-        }
 
         return new JSONObject(jsonString);
     }
