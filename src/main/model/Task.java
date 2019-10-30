@@ -7,8 +7,8 @@ import java.util.Calendar;
 public class Task extends ItemAbstract {
     private Boolean toBeDone;
     private Boolean deleted;
-    private Calendar startDate;
-    private Calendar endDate;
+    protected Calendar startDate;
+    protected Calendar endDate;
     private ArrayList<Calendar> dateArrayList;
 
     public Task(String name) {

@@ -74,6 +74,7 @@ public class PrimaryMenu extends ToDoListMenu {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
+            this.toDoListContainer = new ToDoListContainer("Empty container");
         }
 
     }

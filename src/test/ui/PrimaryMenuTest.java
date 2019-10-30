@@ -34,11 +34,12 @@ class PrimaryMenuTest {
     @Test
     void uselessInputWithException() {
         // https://stackoverflow.com/questions/6415728/junit-testing-with-simulated-user-input
-        ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
-        System.setIn(in);
-        System.setIn(in);
+//        ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
+//        System.setIn(in);
+//        System.setIn(in);
         try {
             assertEquals("1", primaryMenu.uselessInputWithException("1"));
+            System.out.println("pass");
         } catch (Exception e) {
             e.printStackTrace();
             fail();
