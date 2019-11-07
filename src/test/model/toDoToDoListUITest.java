@@ -115,6 +115,7 @@ public class toDoToDoListUITest {
                 "Done\n" +
                 "\t0: doneTaskfalse");
         assertEquals(toDoListContainer.getTask(1, 3), "toBeDone");
+        assertEquals(toDoListContainer.getList(1).getTask(3).getName(),"toBeDone");
 
     }
 

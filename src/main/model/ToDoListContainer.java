@@ -16,7 +16,6 @@ public class ToDoListContainer extends ListAbstract {
         this.toDoLists = toDoLists;
     }
 
-    ;
 
     //REQUIRES 0<listIndex<lists.size() 0<taskIndex<lists[listIndex].size()
     // EFFECTS return listIndexth list's taskIndexth task's name in the todolist
@@ -27,6 +26,16 @@ public class ToDoListContainer extends ListAbstract {
     //REQUIRES 0<listIndex<lists.size()
     // EFFECTS return a message to user which contains list's name and all the tasks in the list
     public String getTasksPrint(int index) {
+        // high coupling example
+//        String result = getName();
+//        result = result.concat(toDoLists.get(index).getToDoTasks().getListPrint());
+//        TaskList doneTasks = toDoLists.get(index).getDoneTasks();
+//        if (doneTasks.size() > 0) {
+//            result = result.concat("\nDone").concat(doneTasks.getListPrint());
+//        }
+//
+//        return result;
+
         return toDoLists.get(index).getListPrint();
     }
 

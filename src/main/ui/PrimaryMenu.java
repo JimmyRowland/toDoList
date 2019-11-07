@@ -36,8 +36,7 @@ public class PrimaryMenu extends ToDoListMenu {
         switch (getMenuInput()) {
             case "x":
                 return true;
-            default:
-                return false;
+            default:                return false;
         }
     }
 
