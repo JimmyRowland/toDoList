@@ -1,5 +1,6 @@
 package ui;
 
+import model.TaskList;
 import model.ToDoList;
 
 public class SecondaryMenu extends ToDoListMenu {
@@ -65,13 +66,26 @@ public class SecondaryMenu extends ToDoListMenu {
     // EFFECTS Print out the list's tasks
     @Override
     void printItems() {
-        System.out.println(list.getListPrint());
+//        System.out.println(list.getListPrint());
+        System.out.println(getPrint());
     }
 
     void setName() {
         printOutInputName();
         input.nextLine();
         list.setName(input.nextLine());
+    }
+
+    private String getPrint() {
+        // high coupling example
+        String result = list.getName();
+        result = result.concat(list.getToDoTasks().getListPrint());
+        TaskList doneTasks = list.getDoneTasks();
+        if (doneTasks.size() > 0) {
+            result = result.concat("\nDone").concat(doneTasks.getListPrint());
+        }
+
+        return result;
     }
 
 }
